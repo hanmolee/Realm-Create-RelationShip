@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hanmo.testforlinkingobject.MainActivity">
+
+    <EditText
+        android:id="@+id/et_parent_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin8"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:hint="parent name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/et_child_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin8"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:hint="child name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_parent_name" />
+
+    <EditText
+        android:id="@+id/et_parent_name_fk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin8"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:hint="parent name (FK)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_child_name" />
+
+
+    <Button
+        android:id="@+id/btn_create_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin8"
+        android:text="createChild"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_create_parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_create_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:text="createParent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_parent_name_fk" />
+
+    <Button
+        android:id="@+id/btn_update_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:text="updateParentName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_parent" />
+
+    <Button
+        android:id="@+id/btn_update_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin8"
+        android:text="updateChildName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_update_parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_delete_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:text="deleteParent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_update_parent" />
+
+    <Button
+        android:id="@+id/btn_delete_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin8"
+        android:text="deleteChild"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_delete_parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_query1"
+        android:layout_width="188dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="@dimen/margin8"
+        android:text="Query1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_query2"
+        android:layout_width="188dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="@dimen/margin8"
+        android:layout_marginRight="@dimen/margin8"
+        android:text="Query2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin8"
+        android:layout_marginRight="@dimen/margin8"
+        android:layout_marginLeft="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin8"
+        android:padding="@dimen/margin8"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/btn_query1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_delete_parent"
+        >
+        <TextView
+            android:id="@+id/txt_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_marginRight="@dimen/margin8"
+            android:layout_marginLeft="@dimen/margin8"
+            android:layout_marginTop="@dimen/margin8"
+            android:textColor="#000000"
+            android:text="query result" />
+
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

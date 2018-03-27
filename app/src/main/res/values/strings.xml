@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TestForLinkingObject</string>
+    <string name="createRealm">createRealm</string>
+</resources>
