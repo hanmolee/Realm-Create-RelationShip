@@ -119,10 +119,15 @@ class RealmHelper {
     fun deleteChild(childName: String) {
 
         val child = realm.where(ChildTable::class.java).equalTo("childName", childName).findFirst()
+        val parent = realm.where(ParentTable::class.java).equalTo("child.childName", childName).findAll()
 
         realm.executeTransaction {
             child?.deleteFromRealm()
+            parent?.deleteAllFromRealm()
         }
+
+
+
     }
 
     fun queryChildRelationship(parentName: String): RealmResults<ChildTable> {
