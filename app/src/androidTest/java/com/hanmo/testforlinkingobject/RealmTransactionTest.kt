@@ -140,23 +140,28 @@ class RealmTransactionTest {
     fun DdeleteChild() {
 
         val testQuery = realm.where(ParentTable::class.java).equalTo("id", parentId).findFirst()
-        Log.e("hanmolee P.child 1", testQuery?.child?.first().toString())
-        Log.e("hanmolee P.child 2", testQuery?.child?.size.toString())
+        assertNotNull(testQuery)
+        testQuery?.let {
+            it.child?.let {
+                assertNotNull(it.where().equalTo("id", childId).findFirst())
+            }
+        }
 
         val childTable = realm.where(ChildTable::class.java).equalTo("id", childId).findFirst()
         realm.executeTransaction {
             childTable?.deleteFromRealm()
         }
 
-        val testQuery2 = realm.where(ParentTable::class.java).equalTo("id", parentId).findFirst()
-        Log.e("hanmolee P.child 3", testQuery2?.child?.size.toString())
+        val childTable2 = realm.where(ChildTable::class.java).equalTo("id", childId).findFirst()
+        assertNull(childTable2)
 
-        val testParentQuery = realm.where(ParentTable::class.java).equalTo("id", parentId).findFirst()
-        assertNotNull(testParentQuery)
-        testParentQuery?.child?.forEach {
-            Log.e("hanmolee", it.toString())
+        val testQuery2 = realm.where(ParentTable::class.java).equalTo("id", parentId).findFirst()
+        assertNotNull(testQuery)
+        testQuery2?.let {
+            it.child?.let {
+                assertNull(it.where().equalTo("id", childId).findFirst())
+            }
         }
-        
     }
 
     @Test
