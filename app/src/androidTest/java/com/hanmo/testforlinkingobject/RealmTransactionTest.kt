@@ -6,6 +6,7 @@ import android.util.Log
 import com.hanmo.testforlinkingobject.DataModel.ChildTable
 import com.hanmo.testforlinkingobject.DataModel.ParentTable
 import io.realm.Realm
+import io.realm.RealmConfiguration
 import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
@@ -28,6 +29,14 @@ class RealmTransactionTest {
     @Before
     fun initDB() {
         Realm.init(InstrumentationRegistry.getTargetContext())
+
+        val config = RealmConfiguration.Builder()
+                .name("test.realm")
+                .deleteRealmIfMigrationNeeded()
+                .build()
+
+        Realm.setDefaultConfiguration(config)
+
         realm = Realm.getDefaultInstance()
     }
 
